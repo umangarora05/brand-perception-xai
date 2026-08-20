@@ -1,0 +1,636 @@
+ 
+(10) Publication No: IN202641096863 A1
+(22) Date of Filing:
+11-08-2026
+(19) Intellectual Property Office, India
+(43) Publication Date: 14-08-2026
+Journal No:
+33/2026
+(12) INDIAN PATENT APPLICATION
+(54) Title: Context-adaptive explainable artificial intelligence system for brand-logo trust-propensity
+inference and automated design prescription
+(51) International Classification:
+G06N 5/04, G06K 9/62, G06N 20/00, G06N 5/02
+G06N 3/04
+(21) Application No: 202641096863
+(31) Priority Document No: --
+(32) Priority Date: --
+(86) International Application No: --
+Filing Date: --
+(87) International Publication No: --
+(61) Patent of Addition to Application No: --
+Filing Date: --
+(62) Divisional to Application No: --
+Filing Date: --
+(71) Name of Applicant(s):
+Vellore  Institute Of  Technology,
+(72) Name of Inventor(s):
+1. Shynu P G
+2. Umang Arora
+3. Khushi
+(57) Abstract:
+ABSTRACT CONTEXT-ADAPTIVE EXPLAINABLE ARTIFICIAL INTELLIGENCE SYSTEM FOR BRAND-LOGO
+TRUST-PROPENSITY INFERENCE AND AUTOMATED DESIGN PRESCRIPTION A method for context-adaptive brand-
+logo trust-propensity inference includes extracting multi-domain features (130) from a logo image, mapping a colour vector to
+emotion-labelled palettes (150), generating a trust-propensity coefficient (160), generating raw feature attributions (170),
+classifying a chromatic operating condition and producing a context-calibrated attribution vector while preserving the raw
+attribution vector at a Dynamic Signal Calibration Module (180), generating a quantitative design prescription (190), and
+outputting the trust-propensity score and design prescription (210).
+1 
+FORM-2  
+  
+THE PATENTS ACT, 1970  
+(39 of 1970)  
+& 
+5 
+THE PATENTS RULES, 2003  
+  
+COMPLETE 
+SPECIFICATION 
+ (See section 10 and rule 13) 
+10 
+  
+TITLE OF INVENTION 
+  
+CONTEXT-ADAPTIVE EXPLAINABLE ARTIFICIAL INTELLIGENCE 
+SYSTEM FOR BRAND-LOGO TRUST-PROPENSITY INFERENCE AND 
+15 
+AUTOMATED DESIGN PRESCRIPTION 
+  
+APPLICANT NAME AND ADDRESS 
+  
+  Vellore Institute of Technology 
+20 
+An Indian University having address as: 
+Vellore Institute of Technology,  
+Tiruvalam Road, Katpadi, Vellore,  
+Tamil Nadu, India -632014  
+  
+25 
+THE FOLLOWING SPECIFICATION PARTICULARLY DESCRIBES 
+THE INVENTION AND THE MANNER IN WHICH IT IS TO BE 
+PERFORMED 
+Digitally Signed.
+Name: Kuldeep Singh
+Date: 09-Aug-2026 19:04:20
+Reason: Patent Efiling
+Location: DELHI
+Signature Not Verified
+2 
+CROSS-REFERENCE TO RELATED APPLICATIONS AND PRIORITY 
+[0001] 
+The present application does not claim priority from any patent 
+application. 
+PREAMBLE 
+[0002] 
+The following specification particularly describes the invention and the 
+5 
+manner in which it is to be performed. 
+FIELD OF INVENTION 
+[0003] 
+The present disclosure relates to explainable artificial intelligence 
+systems for computer vision and brand-identity analytics, and more particularly to 
+a context-adaptive system for inferring a trust-propensity coefficient from a brand-
+10 
+logo image, generating chromatic-condition-dependent feature attributions, and 
+producing quantitative design prescriptions. 
+BACKGROUND 
+[0004] 
+The following text of background art is provided for purposes of 
+understanding and is not an admission that any cited document or technique forms 
+15 
+part of the prior art under applicable law. 
+[0005] 
+Brand logos communicate identity through interacting chromatic, 
+geometric and typographic attributes. Existing logo-processing systems primarily 
+recognise, retrieve, classify or generate logos. Design evaluation remains dependent 
+on human opinion, focus groups or general-purpose feature-importance tools that 
+20 
+apply the same interpretation logic to every image. Uniform analysis creates 
+misleading output in at least two situations: a monochromatic logo may receive an 
+irrelevant colour recommendation, and an intentionally dominant brand colour may 
+be treated as a defect merely because its raw model attribution is negative. 
+Conventional explainability also identifies influential features without determining 
+25 
+a bounded, actionable modification capable of improving the predicted outcome. 
+[0006] 
+US10769496B2, titled "Logo Detection" and assigned to Adobe Inc., 
+discloses a system that receives an image, detects candidate logo regions, extracts 
+neural feature vectors and compares them with reference-logo vectors to identify a 
+logo. This reference addresses logo recognition and localisation but does not infer 
+30 
+3 
+a trust-propensity coefficient, map a logo to an emotion manifold, adapt 
+explanations to chromatic conditions, or generate a quantitative design prescription. 
+[0007] 
+US10558758B2, titled "Enhancing a Computer to Match Emotion and 
+Tone in Text with the Emotion and Tone Depicted by the Color in the Theme of the 
+Page or Its Background" and assigned to International Business Machines 
+5 
+Corporation, associates emotion or tone derived from text with page-theme or 
+background colour. This reference processes text and page colour rather than logo-
+image geometry, typography and learned visual representations. The reference does 
+not perform matched-pair logo analysis, logo trust inference or explainability-
+driven redesign. 
+10 
+[0008] 
+US10467526B1, titled "Artificial Intelligence System for Image 
+Similarity Analysis Using Optimized Image Pair Selection and Multi-Scale 
+Convolutional Neural Networks" and assigned to Amazon Technologies, Inc., uses 
+selected image pairs and multi-scale convolutional neural networks for image-
+similarity analysis. This reference measures general image similarity but does not 
+15 
+use a controlled baseline/revision logo pair to isolate a design intervention, does not 
+derive a psychographic trust target, and does not generate context-calibrated 
+attributions or logo-design prescriptions. 
+[0009] 
+Peer-reviewed literature has established that colour affects trust 
+judgements, that logo naturalness and colour influence brand-gender perception and 
+20 
+affective response, and that perceived logo colourfulness influences consumer 
+judgements through perceived product variety and brand positioning. However, 
+these studies provide consumer-behaviour evidence rather than an automated logo-
+analysis architecture. None of the reviewed references discloses matched-pair 
+differential inference, adaptive explanation routing based on chromatic conditions, 
+25 
+or quantitative design prescription. 
+[0010] 
+The present disclosure addresses the above shortcomings of the prior 
+art. However, the subject matter disclosed herein is entirely different from the prior 
+art in terms of novelty and technological advancements. 
+SUMMARY 
+30 
+4 
+[0011] 
+The following summary is intended to introduce aspects of the present 
+invention in a simplified form and does not identify all the features or the scope of 
+the claimed invention. The summary is provided to assist in understanding the 
+invention and is to be read in conjunction with the detailed description and 
+accompanying drawings, claims, and abstract. One or more embodiments of the 
+5 
+present disclosure are set forth below solely for illustrative purposes and should not 
+be construed as limiting. 
+[0012] 
+According to an aspect of the present disclosure, a method for context-
+adaptive brand-logo trust-propensity inference and design prescription is provided. 
+The method includes receiving and validating a logo image or a baseline/revision 
+10 
+pair at an Image Input and Validation Module. The method includes preprocessing 
+the logo image and extracting multi-domain features including chromatic features, 
+geometric features, typographic features and learned image embeddings at an 
+Image Preprocessing Module and a Multi-Domain Feature Extraction Module. The 
+method includes computing differential features when a matched pair is supplied at 
+15 
+a Matched-Pair Differential Encoder. The method includes mapping a 
+representative colour vector to neighbouring emotion-labelled palette vectors at an 
+Emotion-Manifold Mapping Module. The method includes generating a trust-
+propensity coefficient at a Trust-Inference Engine. The method includes generating 
+raw feature attributions at an Explainability Engine. The method includes 
+20 
+classifying a chromatic operating condition and generating a context-calibrated 
+attribution vector while preserving the raw attribution vector at a Dynamic Signal 
+Calibration Module. The method includes selecting a modifiable feature and 
+generating a quantitative design prescription at a Design-Prescription Generator. 
+The method includes outputting a trust-propensity score, explanations and design 
+25 
+prescription at a Reporting and Visualisation Module. 
+[0013] 
+The above aspect provides a technical advantage of enabling 
+automated, auditable trust-propensity inference from brand-logo images while 
+adapting explanation logic to chromatic operating conditions, thereby reducing 
+irrelevant colour-based recommendations for achromatic logos and separating 
+30 
+intentional dominant-colour strategy from potentially modifiable design friction. 
+5 
+[0014] 
+According to other aspects of the present disclosure, the method may 
+include one or more of the following features. The chromatic operating condition 
+may be classified as achromatic, ordinarily chromatic, or characterised by a 
+dominant visual signal. The Dynamic Signal Calibration Module may include an 
+Achromatic Signal Gate that excludes colour-domain attribution values from a 
+5 
+prescription pathway when measured saturation is below a configurable threshold. 
+[0015] 
+The above aspect provides a technical advantage of preventing colour 
+features from controlling design recommendations when colour is non-operative in 
+the logo, thereby avoiding irrelevant palette advice for monochromatic or near-
+monochromatic logos. 
+10 
+[0016] 
+According to other aspects of the present disclosure, the Dynamic 
+Signal Calibration Module may include a Dominant Signal Contextualiser that 
+retains the raw attribution and generates a contextual preservation/modification 
+score when a dominance ratio exceeds a configurable threshold. The method may 
+include storing both an unmodified raw attribution vector and a distinct context-
+15 
+calibrated attribution vector along with thresholds, model version and selected 
+analysis mode at an Audit and Provenance Store. 
+[0017] 
+The above aspect provides a technical advantage of preserving 
+explanation fidelity through independent raw and calibrated attribution streams, 
+enabling intentional dominant brand colours to be recognised and handled 
+20 
+appropriately rather than being flagged as defects. 
+[0018] 
+According to other aspects of the present disclosure, the Matched-Pair 
+Differential Encoder may compute an embedding difference between baseline and 
+revised logo embeddings and may compute an embedding displacement as a 
+displacement feature. The Matched-Pair Differential Encoder may retain 
+25 
+engineered feature differences to support feature-specific interpretation of a design 
+intervention. 
+[0019] 
+The above aspect provides a technical advantage of enabling 
+reproducible measurement of a controlled logo change rather than comparison of 
+unrelated images, thereby isolating the effect of deliberate design interventions on 
+30 
+trust-propensity. 
+6 
+[0020] 
+According to other aspects of the present disclosure, the Emotion-
+Manifold Mapping Module may implement nearest-neighbour search through a 
+KD-tree or equivalent indexing structure. The Emotion-Manifold Mapping Module 
+may use a corpus of palettes tagged across psychological dimensions. The Trust-
+Inference Engine may use a gradient-boosted decision-tree model to generate the 
+5 
+normalised trust-propensity coefficient. 
+[0021] 
+The above aspect provides a technical advantage of grounding the 
+predictive target in an independently prepared emotion manifold, reducing circular 
+dependence on labels generated from the same engineered features used for model 
+training. 
+10 
+[0022] 
+According to other aspects of the present disclosure, the method may 
+include combining outputs from a differential model and a general-logo model 
+using configurable weights at an Ensemble Corroboration Module. The Design-
+Prescription Generator may select a modifiable feature with an adverse calibrated 
+contribution and compute a bounded change including reduction of stroke weight, 
+15 
+increase of inter-character spacing, adjustment of circularity, reduction of edge-
+density imbalance, or constrained palette adjustment. 
+[0023] 
+The above aspect provides a technical advantage of improving 
+robustness through cross-model corroboration and converting model explanations 
+into auditable, numerical design actions rather than general feature-importance 
+20 
+rankings. 
+[0024] 
+According to other aspects of the present disclosure, the method may 
+include constructing and re-evaluating bounded logo variations at a Candidate 
+Modification Module by evaluating candidate changes and selecting a minimum 
+change satisfying an improvement criterion and applicable design-preservation 
+25 
+constraints. 
+[0025] 
+The above aspect provides a technical advantage of generating 
+actionable bounded design modifications with minimum effective change selection, 
+enabling designers to implement precise, constrained adjustments that achieve 
+trust-propensity improvement while preserving brand identity. 
+30 
+7 
+[0026] 
+The foregoing general description of the illustrative embodiments and 
+the following detailed description thereof are merely exemplary aspects of the 
+teachings of this disclosure and are not restrictive. 
+BRIEF DESCRIPTION OF FIGURES 
+[0027] 
+The drawings appended herein illustrate exemplary embodiments of the 
+5 
+present invention and are provided to enhance understanding of the inventive 
+features disclosed. These figures, when read in conjunction with the detailed 
+description, depict the operational flow, component architecture, and other 
+mechanisms. 
+[0028] 
+FIG. 1 illustrates an overall architecture of a Differential Trust Engine, 
+10 
+according to aspects of the present disclosure. 
+[0029] 
+FIG. 2 illustrates an end-to-end method performed by the Differential 
+Trust Engine, according to aspects of the present disclosure. 
+[0030] 
+FIG. 3 illustrates a Dynamic Signal Calibration Module producing a 
+context-calibrated attribution vector, according to aspects of the present disclosure. 
+15 
+[0031] 
+FIG. 4 illustrates controlled matched-pair differential analysis 
+performed by a Matched-Pair Differential Encoder, according to aspects of the 
+present disclosure. 
+[0032] 
+FIG. 5 illustrates a counterfactual design-prescription workflow, 
+according to aspects of the present disclosure. 
+20 
+DETAILED DESCRIPTION 
+[0033] 
+The following detailed description is intended to provide an in-depth 
+understanding of the invention and its various components, configurations, and 
+operational aspects. While specific embodiments are described with reference to 
+the accompanying drawings, the invention is not limited to the particular forms 
+25 
+disclosed herein. The scope of the invention shall be interpreted broadly and in 
+accordance with the claims appended hereto. 
+[0034] 
+The terms “comprises,” “comprising,” “includes,” “including,” and 
+similar expressions used in this description are intended to be open-ended and 
+should be interpreted to include, but not be limited to, the mentioned elements. 
+30 
+8 
+Unless explicitly stated otherwise, singular terms may include their plural 
+equivalents and vice versa, depending on the context in which they appear. 
+[0035] 
+Reference is now made to the accompanying figures, which illustrate 
+example embodiments of the present invention. It should be appreciated that the 
+figures are intended for illustration and explanatory purposes only and do not limit 
+5 
+the scope of the invention. Similar reference numerals have been used to denote 
+functionally similar components throughout the figures. 
+[0036] 
+The embodiments described herein are presented for illustrative 
+purposes and are subject to variations, modifications, and adaptations by those 
+skilled in the art. Any equivalent implementations that perform substantially the 
+10 
+same function in substantially the same manner are intended to fall within the scope 
+of this disclosure and the claims appended hereto. 
+[0037] 
+The use of the term “exemplary” in the description shall be understood 
+to mean “serving as an example or illustration” and shall not be construed as 
+limiting the invention to the preferred embodiments disclosed. Various other 
+15 
+embodiments may be developed without departing from the spirit or essential 
+characteristics of the invention. The technical principles and advantages outlined in 
+the foregoing description should be read in conjunction with the figures and claims. 
+It is expressly understood that while the detailed description sets out specific 
+structural and operational aspects, the scope of protection is governed by the claims 
+20 
+and includes all legal equivalents of the claimed subject matter. Embodiments of 
+the disclosure are described in the following paragraphs with reference to Figures. 
+In Figures, the same elements or elements that have the same functions are indicated 
+by the same reference signs. 
+[0038] 
+The present invention will now be described in detail with reference to 
+25 
+the accompanying drawings illustrating exemplary embodiments. 
+[0039] 
+FIG. 1 illustrates an overall architecture of a Differential Trust Engine 
+100 according to various embodiments. The Differential Trust Engine 100 may 
+operate in two distinct input modes: a single-logo mode where a single logo image 
+is analyzed independently, and a matched-pair mode where a baseline logo r0 and 
+30 
+9 
+a controlled revision r1 are processed together to isolate the effect of a deliberate 
+design intervention. 
+[0040] 
+An Image Input and Validation Module 110 may receive either a single 
+logo image or a matched baseline/revision pair. The Image Input and Validation 
+Module 110 may verify file type, dimensions, transparency and integrity of the 
+5 
+input. In some cases, the Image Input and Validation Module 110 validates that the 
+received logo image conforms to supported formats and resolution requirements 
+before passing the validated input to subsequent processing stages. 
+[0041] 
+An Image Preprocessing Module 120 may perform resizing, 
+normalisation, colour-space conversion, background handling and optional 
+10 
+foreground segmentation on the received logo images. The Image Preprocessing 
+Module 120 may convert the logo image to a standardised representation suitable 
+for feature extraction. 
+[0042] 
+A Multi-Domain Feature Extraction Module 130 may extract chromatic 
+features including colour statistics, saturation and dominant-channel ratio from the 
+15 
+logo image. The Multi-Domain Feature Extraction Module 130 may extract 
+geometric features including contrast, circularity, symmetry, stroke characteristics, 
+edge density and spatial balance from the logo image. The Multi-Domain Feature 
+Extraction Module 130 may extract typography-related descriptors from the logo 
+image. The Multi-Domain Feature Extraction Module 130 may extract a learned 
+20 
+image embedding using a neural network encoder from the logo image. In some 
+cases, the Multi-Domain Feature Extraction Module 130 may use ResNet50 as an 
+exemplary neural network encoder for learned image embeddings. 
+[0043] 
+A Matched-Pair Differential Encoder 140 may compute differential 
+features when a matched pair is supplied. The Matched-Pair Differential Encoder 
+25 
+140 may compute an embedding difference ΔE = E(r1) − E(r0) between baseline 
+and revised logo embeddings. The Matched-Pair Differential Encoder 140 may 
+compute an embedding displacement d = ||ΔE||₂ as a displacement feature between 
+the baseline and revised logos. The Matched-Pair Differential Encoder 140 may 
+retain engineered feature differences Δf to support feature-specific interpretation of 
+30 
+10 
+the design intervention, capturing typography, stroke weight, spacing, geometry or 
+colour modifications. 
+[0044] 
+An Emotion-Manifold Mapping Module 150 may map a dominant or 
+representative colour vector c to k neighbouring palette vectors pj using nearest-
+neighbour search. The Emotion-Manifold Mapping Module 150 may calculate an 
+5 
+affective target as a distance-weighted combination of emotion dimensions 
+associated with neighbouring palettes. The Emotion-Manifold Mapping Module 
+150 may implement nearest-neighbour search through a KD-tree or equivalent 
+indexing structure. In some cases, the Emotion-Manifold Mapping Module 150 
+may use a corpus of 745 palettes tagged across 35 psychological dimensions, 
+10 
+expanded to 3,725 palette-associated records. 
+[0045] 
+A Trust-Inference Engine 160 may generate a normalised trust-
+propensity coefficient using a gradient-boosted decision-tree model. In some cases, 
+the Trust-Inference Engine 160 may use LightGBM as an exemplary gradient-
+boosted decision-tree implementation. The Trust-Inference Engine 160 receives the 
+15 
+extracted features and mapped affective target to produce a preliminary trust-
+propensity coefficient. 
+[0046] 
+An Ensemble Corroboration Module 165 may combine outputs from a 
+differential model Td and a general-logo model Tg using the formula Tf = αTd + 
+(1−α)Tg with configurable weights. In some cases, the Ensemble Corroboration 
+20 
+Module 165 may use an illustrative laboratory configuration with α = 0.60 for 
+combining differential and general-logo model outputs. 
+[0047] 
+An Explainability Engine 170 may generate raw local feature-
+attribution values for the current prediction using model-agnostic explanation 
+techniques. In some cases, the Explainability Engine 170 may use SHAP as an 
+25 
+exemplary technique for generating raw local feature-attribution values. 
+[0048] 
+A Dynamic Signal Calibration Module 180 may classify the chromatic 
+operating condition as achromatic, ordinarily chromatic, or characterised by a 
+dominant visual signal. The Dynamic Signal Calibration Module 180 may comprise 
+an Achromatic Signal Gate 181 and a Dominant Signal Contextualiser 182. The 
+30 
+Dynamic Signal Calibration Module 180 may maintain dual attribution records 
+11 
+storing both an unmodified raw attribution vector and a distinct context-calibrated 
+attribution vector along with thresholds, model version and selected analysis mode. 
+[0049] 
+A Design-Prescription Generator 190 may select a modifiable feature 
+with an adverse calibrated contribution and compute a bounded change. The 
+bounded change may include reduction of stroke weight, increase of inter-character 
+5 
+spacing, adjustment of circularity, reduction of edge-density imbalance, or 
+constrained palette adjustment. 
+[0050] 
+A Candidate Modification Module 200 may construct and re-evaluate 
+bounded logo variations. The Candidate Modification Module 200 may evaluate 
+candidate changes Δx and select the minimum change satisfying the improvement 
+10 
+criterion T̂(x+Δx) − T̂(x) ≥ δ and applicable design-preservation constraints. 
+[0051] 
+A Reporting and Visualisation Module 210 may produce output 
+including the trust-propensity score, active analysis mode, raw and calibrated 
+explanations, design prescription and before/after comparison report. 
+[0052] 
+An Audit and Provenance Store 220 may retain input metadata, 
+15 
+extracted features, raw and calibrated attributions, thresholds, model version, 
+selected mode and output history for auditability. The Audit and Provenance Store 
+220 receives data from the Dynamic Signal Calibration Module 180, the Design-
+Prescription Generator 190, the Candidate Modification Module 200 and the 
+Reporting and Visualisation Module 210. 
+20 
+[0053] 
+The Differential Trust Engine 100 may be implemented as an API, 
+design-audit application or computer-assisted logo-design module. The modular 
+architecture enables integration with existing brand-identity workflows and design 
+tools. 
+[0054] 
+FIG. 2 illustrates an end-to-end method performed by the Differential 
+25 
+Trust Engine 100 according to various embodiments. The method maintains 
+separation between raw and calibrated attribution streams throughout the process, 
+with each step contributing to the final auditable output. 
+[0055] 
+The method may begin with logo reception and validation at the Image 
+Input and Validation Module 110. The Image Input and Validation Module 110 
+30 
+may receive and validate a logo image or a baseline/revision pair, verifying file 
+12 
+type, dimensions, transparency and integrity before passing the validated input to 
+subsequent processing stages. 
+[0056] 
+The method may proceed with preprocessing at the Image 
+Preprocessing Module 120. The Image Preprocessing Module 120 may perform 
+resizing, normalisation, colour-space conversion, background handling and 
+5 
+optional foreground segmentation on the received logo images. 
+[0057] 
+The method may proceed with multi-domain feature extraction at the 
+Multi-Domain Feature Extraction Module 130. The Multi-Domain Feature 
+Extraction Module 130 may extract chromatic features, geometric features, 
+typographic features and learned image embeddings from the preprocessed logo 
+10 
+image. 
+[0058] 
+When a matched pair is supplied, the method may proceed with 
+differential feature computation at the Matched-Pair Differential Encoder 140. The 
+Matched-Pair Differential Encoder 140 may compute the embedding difference ΔE 
+= E(r1) − E(r0), the displacement magnitude d = ||ΔE||₂, and engineered feature 
+15 
+differences Δf between the baseline and revised logos. 
+[0059] 
+The method may proceed with colour-to-emotion mapping at the 
+Emotion-Manifold Mapping Module 150. The Emotion-Manifold Mapping 
+Module 150 may map a representative colour vector to neighbouring emotion-
+labelled palette vectors and calculate a distance-weighted affective target. 
+20 
+[0060] 
+The method may proceed with trust-propensity generation at the Trust-
+Inference Engine 160. The Trust-Inference Engine 160 may generate a normalised 
+trust-propensity coefficient from the extracted features and mapped affective target. 
+[0061] 
+The method may optionally proceed with ensembling at the Ensemble 
+Corroboration Module 165. The Ensemble Corroboration Module 165 may 
+25 
+combine outputs from a differential model Td and a general-logo model Tg using 
+the formula Tf = αTd + (1−α)Tg with configurable weights. 
+[0062] 
+The method may proceed with raw attribution retention at the 
+Explainability Engine 170. The Explainability Engine 170 may generate raw local 
+feature-attribution values for the current prediction and retain the raw attribution 
+30 
+vector for subsequent processing and audit purposes. 
+13 
+[0063] 
+The method may proceed with chromatic condition classification and 
+context-calibrated attribution generation at the Dynamic Signal Calibration Module 
+180. The Dynamic Signal Calibration Module 180 may classify the chromatic 
+operating condition and produce a context-calibrated attribution vector without 
+overwriting the raw attribution vector. The Achromatic Signal Gate 181 may 
+5 
+activate when measured saturation S is below the achromatic threshold τa to 
+exclude colour-domain entries from the prescription pathway. The Dominant Signal 
+Contextualiser 182 may activate when a dominance ratio D exceeds the dominance 
+threshold τd to retain the raw attribution and generate a contextual 
+preservation/modification score. 
+10 
+[0064] 
+The method may proceed with modifiable feature selection and 
+quantitative prescription generation at the Design-Prescription Generator 190. The 
+Design-Prescription Generator 190 may select a modifiable feature with an adverse 
+calibrated contribution and compute a bounded design modification. 
+[0065] 
+The method may optionally proceed with candidate logo construction 
+15 
+and re-evaluation at the Candidate Modification Module 200. The Candidate 
+Modification Module 200 may construct candidate logo variations, re-evaluate each 
+candidate against the trust-propensity improvement criterion T̂(x+Δx) − T̂(x) ≥ δ 
+and design-preservation constraints, and select the minimum effective change 
+satisfying the threshold δ and all constraints. 
+20 
+[0066] 
+The method may conclude with output of score, explanations, 
+prescription and report through the Reporting and Visualisation Module 210. The 
+Reporting and Visualisation Module 210 may produce the trust-propensity score, 
+active analysis mode, raw and calibrated explanations, design prescription and 
+before/after comparison report. The audit trail may be written to the Audit and 
+25 
+Provenance Store 220, which retains input metadata, extracted features, raw and 
+calibrated attributions, thresholds, model version, selected mode and output history. 
+[0067] 
+FIG. 3 illustrates the Dynamic Signal Calibration Module 180 
+producing a context-calibrated attribution vector from a raw attribution vector 
+generated by the Explainability Engine 170 according to various embodiments. The 
+30 
+Dynamic Signal Calibration Module 180 evaluates measured saturation S and 
+14 
+dominance ratio D against configurable thresholds to determine the appropriate 
+processing pathway. 
+[0068] 
+The Achromatic Signal Gate 181 may activate when measured 
+saturation S is below an achromatic threshold τa. In some cases, the Achromatic 
+Signal Gate 181 may use an illustrative laboratory threshold of τa = 0.05 for 
+5 
+detecting non-operative colour conditions. When the Achromatic Signal Gate 181 
+activates, colour-domain entries may be set to zero only in the prescription vector 
+Φcal while preserving the raw attribution vector Φraw. The Achromatic Signal Gate 
+181 excludes colour features from the prescription pathway, redirecting the 
+diagnostic process to geometry, typography and structure while avoiding irrelevant 
+10 
+palette advice for monochromatic or near-monochromatic logos. 
+[0069] 
+When saturation S exceeds the achromatic threshold τa, the Dynamic 
+Signal Calibration Module 180 may evaluate whether the dominance ratio D 
+exceeds a dominance threshold τd. The Dominant Signal Contextualiser 182 may 
+activate when the dominance ratio D exceeds the threshold τd. In some cases, the 
+15 
+Dominant Signal Contextualiser 182 may use an illustrative dominance threshold 
+of τd = 0.40 for detecting dominant visual signals. 
+[0070] 
+When the Dominant Signal Contextualiser 182 activates, the raw 
+attribution vector Φraw may be retained and a contextual preservation/modification 
+score ψ may be generated without altering the raw attribution. The Dominant Signal 
+20 
+Contextualiser 182 may compute the contextual score ψ = h(Φraw, D, model 
+consistency, optional preservation constraints) to determine whether the dominant 
+signal is preserved, cautiously modified, or modified. The contextual score enables 
+intentional dominant brand colours to be recognised and handled appropriately 
+rather than being flagged as defects. 
+25 
+[0071] 
+When the dominance ratio D does not exceed the threshold τd and 
+saturation S exceeds the achromatic threshold τa, the Dynamic Signal Calibration 
+Module 180 may apply standard chromatic interpretation. In the standard chromatic 
+interpretation pathway, the raw attribution values may be processed without 
+achromatic gating or dominant-signal contextualisation. 
+30 
